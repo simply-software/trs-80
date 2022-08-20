@@ -1,0 +1,62 @@
+General line format:
+
+STATEMENT ::= LABEL        ->  MNEMONIC  ->  OPERAND   ->  COMMENT
+           |  LABEL        ->  MNEMONIC  ->  COMMENT
+           |  LABEL        ->  MNEMONIC
+           |  MNEMONIC     ->  OPERAND
+           |  MNEMONIC     ->  COMMENT
+           |  LINE_NUMBER  ->  LABEL     ->  MNEMONIC  ->  OPERAND  -> COMMENT
+           |  LINE_NUMBER  ->  MNEMONIC  ->  OPERAND   ->  COMMENT
+           |  COMMENT
+           |  (blank line)
+           ;
+
+
+LABEL ::=  EXCLAMATION_POINT
+       |   [?@]{1+}  -> [A-Za-z_]           -> [A-Za-z_0-9?@]{0+}
+       |   [A-Za-z_] -> [A-Za-z_0-9?@]{0+}
+       ;
+
+
+/* An IDENTIFIER is a name of a variable or type.  It differs from a label in
+   that LABELs have certain characters that special meaning applicable only
+   to instructions (as a means of identifying target addresses of jumps and
+   branches, for example).
+*/
+
+IDENTIFIER ::= [A-Za-z_] -> [A-Za-z_0-9]{0+}
+		    ;
+
+/* A DIRECTIVE consumes the mnemonic field and possibly also the operand field. */
+
+DIRECTIVE ::= org       ->  ADDRESS
+           |  include   ->  UNQUOTED_STRING
+		   |  ends
+		   |  endp
+           |  setdp     ->  INTEGER[0-255]
+           |  end
+		   ;
+
+/* A LABELED_DIRECTIVE is a directive that also contains a label, though the
+   character set supported in the label is restricted.
+*/
+
+LABELED_DIRECTIVE ::= IDENTIFIER  ->  struct
+                   |  IDENTIFIER  ->  proc
+				   |  IDENTIFIER  ->  equ    -> EXPRESSION[[O
+		           |  fcc       ->  QUOTED_STRING
+                   |  fcn       ->  QUOTED_STRING
+                   |  fcs       ->  QUOTED_STRING
+                   |  fcr       ->  QUOTED_STRING
+                   |  fcb       ->  EXPRESSION[8-bit]
+		           |  fdb       ->  EXPRESSION[16-bit]
+                   |  fqb       ->  EXPRESSION[32-bit]
+                   |  fzb       ->  INTEGER
+                   |  rzb       ->  INTEGER
+                   |  fzd       ->  INTEGER
+                   |  rzd       ->  INTEGER
+                   |  fzq       ->  INTEGER
+                   |  rzq       ->  INTEGER
+                   |  rmb       ->  INTEGER
+                   |  rmd       ->  INTEGER
+                   |  rmq       ->  INTEGER
