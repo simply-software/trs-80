@@ -1,0 +1,42 @@
+.TH "assembly::SourceLine::Token" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::SourceLine::Token
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fB_original_token\fP"
+.br
+.RI "\fBToken\fP as it appeared in _source_line\&. "
+.ti -1c
+.RI "std::string \fB_parsed_token\fP"
+.br
+.RI "Unescaped version of token\&. "
+.ti -1c
+.RI "size_t \fB_offset_in_line\fP"
+.br
+.RI "Where in _source_line the token started\&. "
+.in -1c
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t assembly::SourceLine::Token::_offset_in_line"
+
+.PP
+Where in _source_line the token started\&. 
+.SS "std::string assembly::SourceLine::Token::_original_token"
+
+.PP
+\fBToken\fP as it appeared in _source_line\&. 
+.SS "std::string assembly::SourceLine::Token::_parsed_token"
+
+.PP
+Unescaped version of token\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

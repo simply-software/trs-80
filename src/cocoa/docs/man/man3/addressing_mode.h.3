@@ -1,0 +1,38 @@
+.TH "/home/Jay/trs-80/src/cocoa/addressing_mode.h" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/cocoa/addressing_mode.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdint>\fP
+.br
+\fC#include <iosfwd>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBassembly\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBassembly::AddressingMode\fP : uint8_t { \fBassembly::INHERENT\fP = 0, \fBassembly::IMMEDIATE\fP = 1, \fBassembly::EXTENDED\fP = 2, \fBassembly::EXTENDED_INDIRECT\fP = 3, \fBassembly::INDEXED\fP = 4, \fBassembly::INDEXED_INDIRECT\fP = 5, \fBassembly::RELATIVE\fP = 6, \fBassembly::DIRECT\fP = 7, \fBassembly::NUM_VALUES\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBassembly::operator<<\fP (std::ostream &os, AddressingMode a)"
+.br
+.RI "Output the symbol name (eg, 'INHERENT') "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

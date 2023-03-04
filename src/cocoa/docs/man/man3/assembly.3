@@ -1,0 +1,297 @@
+.TH "assembly" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBContext\fP"
+.br
+.RI "Base class for a source code context\&. "
+.ti -1c
+.RI "class \fBException\fP"
+.br
+.RI "Base class for all exceptions thrown by the assembler\&. "
+.ti -1c
+.RI "class \fBFileContext\fP"
+.br
+.RI "Holds information about the current file being parsed\&. "
+.ti -1c
+.RI "struct \fBProcessorList\fP"
+.br
+.RI "A list of processors that is easily queryable\&. "
+.ti -1c
+.RI "class \fBSourceLine\fP"
+.br
+.RI "A source line along with its parsed representation\&. "
+.ti -1c
+.RI "struct \fBToken\fP"
+.br
+.RI "Information about a recognized token\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBAddressingMode\fP : uint8_t { \fBINHERENT\fP = 0, \fBIMMEDIATE\fP = 1, \fBEXTENDED\fP = 2, \fBEXTENDED_INDIRECT\fP = 3, \fBINDEXED\fP = 4, \fBINDEXED_INDIRECT\fP = 5, \fBRELATIVE\fP = 6, \fBDIRECT\fP = 7, \fBNUM_VALUES\fP }"
+.br
+.ti -1c
+.RI "enum class \fBComputer\fP : uint8_t { \fBCOCO_2\fP, \fBCOCO_3\fP, \fBNUM_VALUES\fP }"
+.br
+.RI "Enumerates the different TRS-80 computers supported\&. "
+.ti -1c
+.RI "enum class \fBProcessor\fP : uint8_t { \fBMC68B09E\fP = 0, \fBNUM_VALUES\fP }"
+.br
+.RI "Enumerates the different CPUs supported by the toolchain\&. "
+.ti -1c
+.RI "enum class \fBTokenID\fP : uint8_t { \fBNONE\fP, \fBDOT\fP, \fBOCTOTHORPE\fP, \fBPERCENT_SIGN\fP, \fBDOLLAR_SIGN\fP, \fBLESS_THAN\fP, \fBGREATER_THAN\fP, \fBDOUBLE_QUOTE\fP, \fBSINGLE_QUOTE\fP, \fBFRONT_SLASH\fP, \fBCOMMA\fP, \fBPLUS_SIGN\fP, \fBINCREMENT\fP, \fBMINUS_SIGN\fP, \fBDECREMENT\fP, \fBLEFT_BRACKET\fP, \fBRIGHT_BRACKET\fP, \fBASTERISK\fP, \fBCARET\fP, \fBAMPERSAND\fP, \fBEXCLAMATION_POINT\fP, \fBPIPE\fP, \fBTILDE\fP, \fBEQUAL_SIGN\fP, \fBLESS_THAN_OR_EQUAL\fP, \fBGREATER_THAN_OR_EQUAL\fP, \fBNOT_EQUAL\fP, \fBLEFT_PARENTHESIS\fP, \fBRIGHT_PARENTHESIS\fP, \fBLEFT_BRACE\fP, \fBRIGHT_BRACE\fP, \fBCOMMENT\fP, \fBTEXT\fP, \fBNUM_VALUES\fP }"
+.br
+.RI "The tokens that are recognized\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, \fBAddressingMode\fP a)"
+.br
+.RI "Output the symbol name (eg, 'INHERENT') "
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, \fBComputer\fP c)"
+.br
+.RI "Output as the symbol name, eg 'COCO_2'\&. "
+.ti -1c
+.RI "template<typename DerivedExceptionType , typename\&.\&.\&. Args> void \fBthrow_\fP (Args &&\&.\&.\&. args)"
+.br
+.RI "Construct the DerivedExceptionType from the given arguments and throw the exception\&. "
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, \fBProcessor\fP p)"
+.br
+.RI "Output as the symbol name, eg 'MC68B09E'\&. "
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, const \fBProcessorList\fP &p)"
+.br
+.RI "Output mnemonically, eg 'PROC_1|PROc_2'\&. "
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &os, \fBTokenID\fP token)"
+.br
+.RI "Output as the token ID, eg 'COMMA'\&. "
+.ti -1c
+.RI "\fBToken\fP \fBrecognize_token\fP (std::string_view input_text)"
+.br
+.RI "Recognize the first token in the input_text\&. "
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBassembly::AddressingMode\fP : uint8_t\fC [strong]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIINHERENT \fP\fP
+.TP
+\fB\fIIMMEDIATE \fP\fP
+.TP
+\fB\fIEXTENDED \fP\fP
+.TP
+\fB\fIEXTENDED_INDIRECT \fP\fP
+.TP
+\fB\fIINDEXED \fP\fP
+.TP
+\fB\fIINDEXED_INDIRECT \fP\fP
+.TP
+\fB\fIRELATIVE \fP\fP
+.TP
+\fB\fIDIRECT \fP\fP
+.TP
+\fB\fINUM_VALUES \fP\fP
+.SS "enum class \fBassembly::Computer\fP : uint8_t\fC [strong]\fP"
+
+.PP
+Enumerates the different TRS-80 computers supported\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICOCO_2 \fP\fP
+.TP
+\fB\fICOCO_3 \fP\fP
+.TP
+\fB\fINUM_VALUES \fP\fP
+.SS "enum class \fBassembly::Processor\fP : uint8_t\fC [strong]\fP"
+
+.PP
+Enumerates the different CPUs supported by the toolchain\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMC68B09E \fP\fP
+.TP
+\fB\fINUM_VALUES \fP\fP
+.SS "enum class \fBassembly::TokenID\fP : uint8_t\fC [strong]\fP"
+
+.PP
+The tokens that are recognized\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINONE \fP\fP
+No token found in input text\&. 
+.TP
+\fB\fIDOT \fP\fP
+
+.TP
+\fB\fIOCTOTHORPE \fP\fP
+# 
+.TP
+\fB\fIPERCENT_SIGN \fP\fP
+% 
+.TP
+\fB\fIDOLLAR_SIGN \fP\fP
+$ 
+.TP
+\fB\fILESS_THAN \fP\fP
+< 
+.TP
+\fB\fIGREATER_THAN \fP\fP
+
+.PP
+.RS 4
+ 
+.RE
+.PP
+
+.TP
+\fB\fIDOUBLE_QUOTE \fP\fP
+" 
+.TP
+\fB\fISINGLE_QUOTE \fP\fP
+' 
+.TP
+\fB\fIFRONT_SLASH \fP\fP
+/ 
+.TP
+\fB\fICOMMA \fP\fP
+, 
+.TP
+\fB\fIPLUS_SIGN \fP\fP
+
+.IP "\(bu" 2
+
+.PP
+
+.TP
+\fB\fIINCREMENT \fP\fP
+++ 
+.TP
+\fB\fIMINUS_SIGN \fP\fP
+
+.IP "\(bu" 2
+
+.PP
+
+.TP
+\fB\fIDECREMENT \fP\fP
+-- 
+.TP
+\fB\fILEFT_BRACKET \fP\fP
+[ 
+.TP
+\fB\fIRIGHT_BRACKET \fP\fP
+] 
+.TP
+\fB\fIASTERISK \fP\fP
+
+.IP "\(bu" 2
+
+.PP
+
+.TP
+\fB\fICARET \fP\fP
+^ 
+.TP
+\fB\fIAMPERSAND \fP\fP
+& 
+.TP
+\fB\fIEXCLAMATION_POINT \fP\fP
+! 
+.TP
+\fB\fIPIPE \fP\fP
+| 
+.TP
+\fB\fITILDE \fP\fP
+~ 
+.TP
+\fB\fIEQUAL_SIGN \fP\fP
+= 
+.TP
+\fB\fILESS_THAN_OR_EQUAL \fP\fP
+<= 
+.TP
+\fB\fIGREATER_THAN_OR_EQUAL \fP\fP
+>= 
+.TP
+\fB\fINOT_EQUAL \fP\fP
+<> \fIOR\fP != 
+.TP
+\fB\fILEFT_PARENTHESIS \fP\fP
+( 
+.TP
+\fB\fIRIGHT_PARENTHESIS \fP\fP
+) 
+.TP
+\fB\fILEFT_BRACE \fP\fP
+{ 
+.TP
+\fB\fIRIGHT_BRACE \fP\fP
+} 
+.TP
+\fB\fICOMMENT \fP\fP
+; \&.\&.\&. 
+.br
+
+.TP
+\fB\fITEXT \fP\fP
+Any chars that aren't the above\&. 
+.TP
+\fB\fINUM_VALUES \fP\fP
+.SH "Function Documentation"
+.PP 
+.SS "std::ostream & assembly::operator<< (std::ostream & os, \fBAddressingMode\fP a)"
+
+.PP
+Output the symbol name (eg, 'INHERENT') 
+.SS "std::ostream & assembly::operator<< (std::ostream & os, \fBComputer\fP c)"
+
+.PP
+Output as the symbol name, eg 'COCO_2'\&. 
+.SS "std::ostream & assembly::operator<< (std::ostream & os, const \fBProcessorList\fP & p)"
+
+.PP
+Output mnemonically, eg 'PROC_1|PROc_2'\&. 
+.SS "std::ostream & assembly::operator<< (std::ostream & os, \fBProcessor\fP p)"
+
+.PP
+Output as the symbol name, eg 'MC68B09E'\&. 
+.SS "std::ostream & assembly::operator<< (std::ostream & os, \fBTokenID\fP token)"
+
+.PP
+Output as the token ID, eg 'COMMA'\&. 
+.SS "\fBToken\fP assembly::recognize_token (std::string_view input_text)"
+
+.PP
+Recognize the first token in the input_text\&. 
+.SS "template<typename DerivedExceptionType , typename\&.\&.\&. Args> void assembly::throw_ (Args &&\&.\&.\&. args)\fC [inline]\fP"
+
+.PP
+Construct the DerivedExceptionType from the given arguments and throw the exception\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

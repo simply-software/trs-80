@@ -1,0 +1,49 @@
+.TH "/home/Jay/trs-80/src/common/format/character_case.h" 3 "Sat Aug 20 2022" "Common code" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/common/format/character_case.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdint>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'character_case\&.inl'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBformat::DefaultCharCaseTraits\fP"
+.br
+.RI "Default character case\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBformat\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBformat::CharCase\fP : uint8_t { \fBformat::LOWER\fP, \fBformat::UPPER\fP }"
+.br
+.RI "Uppercase or lowercase? "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultCharCaseTraits> std::string \fBformat::char_case\fP (const std::string &text)"
+.br
+.RI "Convert the case of all characters in a string\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Common code from the source code\&.

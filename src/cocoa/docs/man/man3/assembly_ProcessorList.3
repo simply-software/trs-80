@@ -1,0 +1,88 @@
+.TH "assembly::ProcessorList" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::ProcessorList \- A list of processors that is easily queryable\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <processor_list\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBProcessorList\fP ()=default"
+.br
+.RI "Construct a empty list\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. ProcessorT> \fBProcessorList\fP (ProcessorT\&.\&.\&. processors)"
+.br
+.RI "Construct a list of one or more processors\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. ProcessorT> bool \fBall\fP (ProcessorT\&.\&.\&. processors) const"
+.br
+.RI "Query if \fIall\fP processors are in the list\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. ProcessorT> bool \fBany\fP (ProcessorT\&.\&.\&. processors) const"
+.br
+.RI "Query if \fIat least one\fP processor is in the list\&. "
+.ti -1c
+.RI "bool \fBhas\fP (\fBProcessor\fP processor) const"
+.br
+.RI "brief Query if this one processor is in the list "
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBProcSet\fP = std::bitset< static_cast< int >(\fBProcessor::NUM_VALUES\fP)>"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBProcSet\fP \fB_processors\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A list of processors that is easily queryable\&. 
+.SH "Member Typedef Documentation"
+.PP 
+.SS "using \fBassembly::ProcessorList::ProcSet\fP =  std::bitset<static_cast<int>(\fBProcessor::NUM_VALUES\fP)>\fC [private]\fP"
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "assembly::ProcessorList::ProcessorList ()\fC [default]\fP"
+
+.PP
+Construct a empty list\&. 
+.SS "template<typename\&.\&.\&. ProcessorT> assembly::ProcessorList::ProcessorList (ProcessorT\&.\&.\&. processors)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Construct a list of one or more processors\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename\&.\&.\&. ProcessorT> bool assembly::ProcessorList::all (ProcessorT\&.\&.\&. processors) const\fC [inline]\fP"
+
+.PP
+Query if \fIall\fP processors are in the list\&. 
+.SS "template<typename\&.\&.\&. ProcessorT> bool assembly::ProcessorList::any (ProcessorT\&.\&.\&. processors) const\fC [inline]\fP"
+
+.PP
+Query if \fIat least one\fP processor is in the list\&. 
+.SS "bool assembly::ProcessorList::has (\fBProcessor\fP processor) const\fC [inline]\fP"
+
+.PP
+brief Query if this one processor is in the list 
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBProcSet\fP assembly::ProcessorList::_processors\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

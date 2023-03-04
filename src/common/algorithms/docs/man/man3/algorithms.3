@@ -1,0 +1,80 @@
+.TH "algorithms" 3 "Sat Aug 20 2022" "Algorithms" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+algorithms
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBanonymous_namespace{enum_cast\&.cpp}\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBEnumCastException\fP"
+.br
+.RI "Exception thrown by the 'enum_cast' algorithm if\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > const char * \fBc_str\fP (const T &value)"
+.br
+.RI "Return a null-terminated string representing the given value\&. "
+.ti -1c
+.RI "const char * \fBc_str\fP (const char *value)"
+.br
+.RI "Overload for const char*\&. "
+.ti -1c
+.RI "const char * \fBc_str\fP (const std::string &value)"
+.br
+.RI "Overload for std::string\&. "
+.ti -1c
+.RI "template<typename T > T \fBenum_cast\fP (size_t integer)"
+.br
+.RI "Convert integer to type T, if possible\&. "
+.ti -1c
+.RI "template<typename T , typename ValueType > void \fBthrow_enum_cast_exception\fP (ValueType value, const char *optional_error_text)"
+.br
+.RI "Function used to throw an \fBEnumCastException\fP\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. ValueTypes, typename UnaryFn > void \fBfor_each\fP (UnaryFn &&fn, ValueTypes\&.\&.\&. values)"
+.br
+.RI "Invokes fn(x) once for each x in [values]\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "const char * algorithms::c_str (const char * value)\fC [inline]\fP"
+
+.PP
+Overload for const char*\&. 
+.SS "const char * algorithms::c_str (const std::string & value)\fC [inline]\fP"
+
+.PP
+Overload for std::string\&. 
+.SS "template<typename T > const char * algorithms::c_str (const T & value)"
+
+.PP
+Return a null-terminated string representing the given value\&. 
+.SS "template<typename T > T algorithms::enum_cast (size_t integer)"
+
+.PP
+Convert integer to type T, if possible\&. 
+.SS "template<typename\&.\&.\&. ValueTypes, typename UnaryFn > void algorithms::for_each (UnaryFn && fn, ValueTypes\&.\&.\&. values)\fC [inline]\fP"
+
+.PP
+Invokes fn(x) once for each x in [values]\&. 
+.SS "template<typename T , typename ValueType > void algorithms::throw_enum_cast_exception (ValueType value, const char * optional_error_text)\fC [inline]\fP"
+
+.PP
+Function used to throw an \fBEnumCastException\fP\&. Function to use to construct and throw this object\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Algorithms from the source code\&.

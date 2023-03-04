@@ -1,0 +1,365 @@
+.TH "format" 3 "Sat Aug 20 2022" "Common code" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+format
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBdetail\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBDefaultBinaryFormatTraits\fP"
+.br
+.RI "Default formatting for binary values\&. "
+.ti -1c
+.RI "struct \fBDefaultCharCaseTraits\fP"
+.br
+.RI "Default character case\&. "
+.ti -1c
+.RI "struct \fBDefaultHexFormatTraits\fP"
+.br
+.RI "Default formatting for hexadecimal values\&. "
+.ti -1c
+.RI "struct \fBDefaultIntFormatTraits\fP"
+.br
+.ti -1c
+.RI "struct \fBDefaultJustificationTraits\fP"
+.br
+.RI "Example traits struct for using justify_text() "
+.ti -1c
+.RI "struct \fBDefaultOctalFormatTraits\fP"
+.br
+.RI "Default formatting for octal values\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBCharCase\fP : uint8_t { \fBLOWER\fP, \fBUPPER\fP }"
+.br
+.RI "Uppercase or lowercase? "
+.ti -1c
+.RI "enum class \fBBinaryPrefix\fP : uint8_t { \fBPREFIX_NONE\fP, \fBPREFIX_0b\fP, \fBPREFIX_b\fP }"
+.br
+.RI "What should be added to the front of the value to\&. "
+.ti -1c
+.RI "enum class \fBHexPrefix\fP : uint8_t { \fBPREFIX_NONE\fP, \fBPREFIX_0X\fP, \fBPREFIX_0x\fP, \fBPREFIX_X\fP, \fBPREFIX_x\fP }"
+.br
+.RI "What should be added to the front of the value to\&. "
+.ti -1c
+.RI "enum class \fBOctalPrefix\fP : uint8_t { \fBPREFIX_NONE\fP, \fBLEADING_ZERO\fP }"
+.br
+.RI "What should be added to the front of the value to\&. "
+.ti -1c
+.RI "enum class \fBJustification\fP : uint8_t { \fBLEFT\fP, \fBCENTER\fP, \fBRIGHT\fP }"
+.br
+.RI "Text justification within a printable field\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultCharCaseTraits> std::string \fBchar_case\fP (const std::string &text)"
+.br
+.RI "Convert the case of all characters in a string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value to 8-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (int8_t value)"
+.br
+.RI "Format an 8-bit signed value to 8-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value to 16-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (int16_t value)"
+.br
+.RI "Format a 16-bit signed value to 16-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value to 32-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (int32_t value)"
+.br
+.RI "Format a 32-bit signed value to 32-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value to 64-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat_as_binary\fP (int64_t value)"
+.br
+.RI "Format a 64-bit signed value to 64-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat_as_hex\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat_as_hex\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat_as_hex\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat_as_hex\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (int8_t value)"
+.br
+.RI "Format an 8-bit signed value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (int16_t value)"
+.br
+.RI "Format a 16-bit signed value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (int32_t value)"
+.br
+.RI "Format a 32-bit signed value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultIntFormatTraits> std::string \fBformat_as_int\fP (int64_t value)"
+.br
+.RI "Format a 64-bit signed value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string \fBformat_as_octal\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string \fBformat_as_octal\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string \fBformat_as_octal\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string \fBformat_as_octal\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename JustificationTraits  = DefaultJustificationTraits> std::string \fBjustify\fP (const std::string &text_to_justify)"
+.br
+.RI "Pad the input string with a fill character\&. "
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBformat::BinaryPrefix\fP : uint8_t\fC [strong]\fP"
+
+.PP
+What should be added to the front of the value to\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPREFIX_NONE \fP\fP
+Add nothing to the front\&. 
+.TP
+\fB\fIPREFIX_0b \fP\fP
+Add '0b'\&. 
+.TP
+\fB\fIPREFIX_b \fP\fP
+Add 'b'\&. 
+.SS "enum class \fBformat::CharCase\fP : uint8_t\fC [strong]\fP"
+
+.PP
+Uppercase or lowercase? 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILOWER \fP\fP
+A-Z -> a-z\&. 
+.TP
+\fB\fIUPPER \fP\fP
+a-z -> A-Z 
+.SS "enum class \fBformat::HexPrefix\fP : uint8_t\fC [strong]\fP"
+
+.PP
+What should be added to the front of the value to\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPREFIX_NONE \fP\fP
+Add nothing to the front\&. 
+.TP
+\fB\fIPREFIX_0X \fP\fP
+Add '0X'\&. 
+.TP
+\fB\fIPREFIX_0x \fP\fP
+Add '0x'\&. 
+.TP
+\fB\fIPREFIX_X \fP\fP
+Add 'X'\&. 
+.TP
+\fB\fIPREFIX_x \fP\fP
+Add 'x'\&. 
+.SS "enum class \fBformat::Justification\fP : uint8_t\fC [strong]\fP"
+
+.PP
+Text justification within a printable field\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILEFT \fP\fP
+Text is left-justified\&. 
+.TP
+\fB\fICENTER \fP\fP
+Text is centered\&. 
+.TP
+\fB\fIRIGHT \fP\fP
+Text is right-justified\&. 
+.SS "enum class \fBformat::OctalPrefix\fP : uint8_t\fC [strong]\fP"
+
+.PP
+What should be added to the front of the value to\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPREFIX_NONE \fP\fP
+Add nothing to the front\&. 
+.TP
+\fB\fILEADING_ZERO \fP\fP
+Add a '0' (zero) to the front\&. 
+.SH "Function Documentation"
+.PP 
+.SS "template<typename FmtSpec  = DefaultCharCaseTraits> std::string format::char_case (const std::string & text)\fC [inline]\fP"
+
+.PP
+Convert the case of all characters in a string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (int16_t value)"
+
+.PP
+Format a 16-bit signed value to 16-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (int32_t value)"
+
+.PP
+Format a 32-bit signed value to 32-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (int64_t value)"
+
+.PP
+Format a 64-bit signed value to 64-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (int8_t value)"
+
+.PP
+Format an 8-bit signed value to 8-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (uint16_t value)"
+
+.PP
+Format a 16-bit unsigned value to 16-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (uint32_t value)"
+
+.PP
+Format a 32-bit unsigned value to 32-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (uint64_t value)"
+
+.PP
+Format a 64-bit unsigned value to 64-char string\&. 
+.SS "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string format::format_as_binary (uint8_t value)"
+
+.PP
+Format an 8-bit unsigned value to 8-char string\&. 
+.SS "template<typename FmtSpec  = DefaultHexFormatTraits> std::string format::format_as_hex (uint16_t value)\fC [inline]\fP"
+
+.PP
+Format a 16-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultHexFormatTraits> std::string format::format_as_hex (uint32_t value)\fC [inline]\fP"
+
+.PP
+Format a 32-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultHexFormatTraits> std::string format::format_as_hex (uint64_t value)\fC [inline]\fP"
+
+.PP
+Format a 64-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultHexFormatTraits> std::string format::format_as_hex (uint8_t value)\fC [inline]\fP"
+
+.PP
+Format an 8-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (int16_t value)\fC [inline]\fP"
+
+.PP
+Format a 16-bit signed value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (int32_t value)\fC [inline]\fP"
+
+.PP
+Format a 32-bit signed value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (int64_t value)\fC [inline]\fP"
+
+.PP
+Format a 64-bit signed value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (int8_t value)\fC [inline]\fP"
+
+.PP
+Format an 8-bit signed value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (uint16_t value)\fC [inline]\fP"
+
+.PP
+Format a 16-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (uint32_t value)\fC [inline]\fP"
+
+.PP
+Format a 32-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (uint64_t value)\fC [inline]\fP"
+
+.PP
+Format a 64-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultIntFormatTraits> std::string format::format_as_int (uint8_t value)\fC [inline]\fP"
+
+.PP
+Format an 8-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string format::format_as_octal (uint16_t value)\fC [inline]\fP"
+
+.PP
+Format a 16-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string format::format_as_octal (uint32_t value)\fC [inline]\fP"
+
+.PP
+Format a 32-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string format::format_as_octal (uint64_t value)\fC [inline]\fP"
+
+.PP
+Format a 64-bit unsigned value\&. 
+.SS "template<typename FmtSpec  = DefaultOctalFormatTraits> std::string format::format_as_octal (uint8_t value)\fC [inline]\fP"
+
+.PP
+Format an 8-bit unsigned value\&. 
+.SS "template<typename JustificationTraits  = DefaultJustificationTraits> std::string format::justify (const std::string & text_to_justify)\fC [inline]\fP"
+
+.PP
+Pad the input string with a fill character\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Common code from the source code\&.

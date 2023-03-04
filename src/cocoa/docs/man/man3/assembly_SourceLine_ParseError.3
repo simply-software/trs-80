@@ -1,0 +1,100 @@
+.TH "assembly::SourceLine::ParseError" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::SourceLine::ParseError \- The class that is thrown for all user-code that has parse errors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <source_line\&.h>\fP
+.PP
+Inherits \fBassembly::Exception\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBParseError\fP (\fBErrorType\fP \fBerror_type\fP, const \fBSourceLine\fP &source_line)"
+.br
+.RI "Construction\&. "
+.ti -1c
+.RI "\fBErrorType\fP \fBerror_type\fP () const"
+.br
+.RI "Access the type of error that occurred\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBErrorType\fP \fB_error_type\fP"
+.br
+.RI "Which error occurred\&. "
+.ti -1c
+.RI "std::string \fB_source_line\fP"
+.br
+.RI "Line of user code in error\&. "
+.ti -1c
+.RI "std::string \fB_token_in_error\fP"
+.br
+.RI "\fBToken\fP that caused the error\&. "
+.ti -1c
+.RI "size_t \fB_offset_of_token\fP"
+.br
+.RI "Where the token is in the source line\&. "
+.ti -1c
+.RI "size_t \fB_length_of_token\fP"
+.br
+.RI "Length of the token in the source line\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+The class that is thrown for all user-code that has parse errors\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "assembly::SourceLine::ParseError::ParseError (\fBErrorType\fP error_type, const \fBSourceLine\fP & source_line)\fC [inline]\fP"
+
+.PP
+Construction\&. Constructor of a \fBParseError\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIerror_type\fP Which error occurred
+.br
+\fIsource_line\fP \fBSourceLine\fP that caused error 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSourceLine::ErrorType\fP assembly::SourceLine::ParseError::error_type () const\fC [inline]\fP"
+
+.PP
+Access the type of error that occurred\&. Access the type of parse error that occurred\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBErrorType\fP assembly::SourceLine::ParseError::_error_type\fC [private]\fP"
+
+.PP
+Which error occurred\&. 
+.SS "size_t assembly::SourceLine::ParseError::_length_of_token\fC [private]\fP"
+
+.PP
+Length of the token in the source line\&. 
+.SS "size_t assembly::SourceLine::ParseError::_offset_of_token\fC [private]\fP"
+
+.PP
+Where the token is in the source line\&. 
+.SS "std::string assembly::SourceLine::ParseError::_source_line\fC [private]\fP"
+
+.PP
+Line of user code in error\&. 
+.SS "std::string assembly::SourceLine::ParseError::_token_in_error\fC [private]\fP"
+
+.PP
+\fBToken\fP that caused the error\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

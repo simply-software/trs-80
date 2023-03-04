@@ -1,0 +1,375 @@
+.TH "assembly::SourceLine" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::SourceLine \- A source line along with its parsed representation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <source_line\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBParseError\fP"
+.br
+.RI "The class that is thrown for all user-code that has parse errors\&. "
+.ti -1c
+.RI "class \fBParserAction\fP"
+.br
+.RI "Defines the action to take in a given state for a given char input\&. "
+.ti -1c
+.RI "struct \fBToken\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBErrorType\fP : uint8_t { \fBNONE\fP = 0, \fBTooManyTokensOnLine\fP = 1, \fBUnterminatedString\fP = 2, \fBUnexpectedDoubleQuote\fP = 3, \fBNoSpaceBeforeSemicolon\fP = 4, \fBNoSpaceAfterClosingQuote\fP = 5, \fBLineNumberOutOfRange\fP = 6, \fBNUM_ERRORS\fP }"
+.br
+.RI "Enumeration of all parse errors this class may encounter\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSourceLine\fP (const std::string &text)"
+.br
+.RI "Construct and parses a line of source code according to the GRAMMAR\&. "
+.ti -1c
+.RI "size_t \fBnum_tokens\fP () const"
+.br
+.RI "Return the number of non-LINE_NUMBER, non-COMMENT tokens\&. "
+.ti -1c
+.RI "std::string \fBparsed_token\fP (size_t index) const"
+.br
+.RI "Returns the requested parsed token [0\&.\&.\&.\fBnum_tokens()\fP-1]\&. "
+.ti -1c
+.RI "size_t \fBtoken_offset\fP (size_t index) const"
+.br
+.RI "Returns the char offset into the line where token begins\&. "
+.ti -1c
+.RI "std::string \fBtoken_in_source\fP (size_t index) const"
+.br
+.RI "Returns the given token as it appeared in the original source line (escape characters will be included) "
+.ti -1c
+.RI "bool \fBhas_source_line_number\fP () const"
+.br
+.RI "Did we parse a line number? "
+.ti -1c
+.RI "size_t \fBsource_line_number\fP () const"
+.br
+.RI "Return the line number parsed\&. "
+.ti -1c
+.RI "bool \fBis_blank_line\fP () const"
+.br
+.RI "Did the line have no tokens or comments? "
+.in -1c
+.SS "Private Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBParserState\fP { \fBRecognizeStartToken\fP = 0, \fBRecognizeString\fP = 1, \fBRecognizeToken\fP = 2, \fBRecognizeEscapeSequence\fP = 3, \fBRequireWhitespace\fP = 4, \fBEnd\fP = 5 }"
+.br
+.RI "Current state of the state machine in \fB_parse()\fP "
+.ti -1c
+.RI "enum \fBCharType\fP { \fBEndOfLine\fP = 0, \fBDigit\fP = 1, \fBSemicolon\fP = 2, \fBDoubleQuote\fP = 3, \fBNewLine\fP = 4, \fBWhitespace\fP = 5, \fBNonWhitespace\fP = 6, \fBAnyChar\fP = 7, \fBEndOfInput\fP = 8, \fBBackslash\fP = 9, \fBMAX_CHARTYPES\fP }"
+.br
+.RI "Type of input that triggers an associated action\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fB_parse\fP ()"
+.br
+.RI "Tokenizes the line\&. May throw \fBParseError\fP\&. "
+.ti -1c
+.RI "uint32_t \fB_max_line_number\fP () const"
+.br
+.RI "Max line number supported\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fB_source_line\fP"
+.br
+.RI "Original line of code\&. "
+.ti -1c
+.RI "uint32_t \fB_line_number\fP"
+.br
+.RI "Line number, if present, 0 otherwise\&. "
+.ti -1c
+.RI "size_t \fB_num_tokens\fP"
+.br
+.RI "Non line-number tokens recgonized\&. "
+.ti -1c
+.RI "\fBToken\fP \fB_tokens\fP [\fBMAX_TOKENS_PER_LINE\fP]"
+.br
+.RI "Non-line number, non-comment tokens\&. "
+.ti -1c
+.RI "bool \fB_has_comment\fP"
+.br
+.RI "Was there a comment on the line? "
+.ti -1c
+.RI "std::string \fB_current_token\fP"
+.br
+.RI "\fBToken\fP being recognized\&. "
+.ti -1c
+.RI "\fBParserState\fP \fB_parser_state\fP"
+.br
+.RI "State machine state\&. "
+.ti -1c
+.RI "size_t \fB_current_offset\fP"
+.br
+.RI "Offset into _source_line\&. "
+.ti -1c
+.RI "size_t \fB_token_start_offset\fP"
+.br
+.RI "Offset in line where token started\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static constexpr size_t \fBMAX_TOKENS_PER_LINE\fP = 3"
+.br
+.ti -1c
+.RI "static constexpr char \fBEND_OF_LINE_CHAR\fP = '\\0'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A source line along with its parsed representation\&. 
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBassembly::SourceLine::CharType\fP\fC [private]\fP"
+
+.PP
+Type of input that triggers an associated action\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIEndOfLine \fP\fP
+End-of-input\&. 
+.TP
+\fB\fIDigit \fP\fP
+Any digit [0-9]\&. 
+.TP
+\fB\fISemicolon \fP\fP
+Specifically a semi-colon\&. 
+.TP
+\fB\fIDoubleQuote \fP\fP
+Specifically a double-quote\&. 
+.TP
+\fB\fINewLine \fP\fP
+
+.br
+ or \\r; ASCII 0x0D or 0x0A 
+.TP
+\fB\fIWhitespace \fP\fP
+Newline, tab, or space\&. 
+.TP
+\fB\fINonWhitespace \fP\fP
+\fIany character\fP that is not Whitespace 
+.TP
+\fB\fIAnyChar \fP\fP
+Neither EndOfLine nor a NewLine\&. 
+.TP
+\fB\fIEndOfInput \fP\fP
+END_OF_LINE_CHAR specifically\&. 
+.TP
+\fB\fIBackslash \fP\fP
+Used for escaping double-quotes\&. 
+.TP
+\fB\fIMAX_CHARTYPES \fP\fP
+Used for static_assertions\&. 
+.SS "enum class \fBassembly::SourceLine::ErrorType\fP : uint8_t\fC [strong]\fP"
+
+.PP
+Enumeration of all parse errors this class may encounter\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINONE \fP\fP
+Used in absence of other errors\&. 
+.TP
+\fB\fITooManyTokensOnLine \fP\fP
+More than MAX_TOKENS_PER_LINE tokens\&. 
+.TP
+\fB\fIUnterminatedString \fP\fP
+No closing double-quote found on line\&. 
+.TP
+\fB\fIUnexpectedDoubleQuote \fP\fP
+\fBToken\fP may not contain double-quote\&. 
+.TP
+\fB\fINoSpaceBeforeSemicolon \fP\fP
+\fBToken\fP may not contain semicolon\&. 
+.TP
+\fB\fINoSpaceAfterClosingQuote \fP\fP
+String must have whitespace after it\&. 
+.TP
+\fB\fILineNumberOutOfRange \fP\fP
+Line number > max value\&. 
+.TP
+\fB\fINUM_ERRORS \fP\fP
+.SS "enum \fBassembly::SourceLine::ParserState\fP\fC [private]\fP"
+
+.PP
+Current state of the state machine in \fB_parse()\fP 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIRecognizeStartToken \fP\fP
+.TP
+\fB\fIRecognizeString \fP\fP
+.TP
+\fB\fIRecognizeToken \fP\fP
+.TP
+\fB\fIRecognizeEscapeSequence \fP\fP
+.TP
+\fB\fIRequireWhitespace \fP\fP
+.TP
+\fB\fIEnd \fP\fP
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "assembly::SourceLine::SourceLine (const std::string & text)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Construct and parses a line of source code according to the GRAMMAR\&. Construct from a line of source code\&.
+.PP
+May throw \fBParseError\fP 
+.SH "Member Function Documentation"
+.PP 
+.SS "uint32_t assembly::SourceLine::_max_line_number () const\fC [inline]\fP, \fC [private]\fP"
+
+.PP
+Max line number supported\&. Max line number supported in user code\&. 
+.SS "void assembly::SourceLine::_parse ()\fC [private]\fP"
+
+.PP
+Tokenizes the line\&. May throw \fBParseError\fP\&. Tokenizes the line\&.
+.PP
+.PP
+.nf
+   This is done with a state machine that implements an LL(0)
+   parser\&.
+
+   Each state has multiple possible valid inputs\&.  Thus, each
+   state is comprised of an array of ParserActions, only one
+   of which will be applied to the input\&.  The state machine
+   works by iterating the list of ParserActions and selecting
+   *the first* action that matches the input\&.  (Most states do
+   have multiple ParserActions whose input set overlaps)\&.
+
+   A comment is recognized with by the semicolon character,
+   except when the semicolon is within a double-quoted string;
+   there it is interpreted as a semicolon\&.  Recognizing a
+   comment character causes the parse of the line to end
+   immediately; that is, the comment ends at the end of the
+   line\&.  Comments are not parsed as tokens\&.
+
+   A double-quoted string is a token that begins and ends with
+   a double-quote\&.  Double-quoted strings may themselves contain
+   double-quotes;  to do this, the embedded double-quotes must be
+   escaped with a backslash: 'This is a \\'double-quoted\\' string'\&.
+   Backslashes do not have any other meaning;  if they are not
+   followed immediately by a double-quote character then the
+   backslash is interpreted as a literal backslash\&.
+
+   Tokens may not contain embedded semicolons, which would be
+   interpreted as the beginning of a comment, except that the
+   parser requires at least one space between token and comment
+   (for readability of the assembler, not because of this
+   implementation)\&. 
+.fi
+.PP
+ 
+.SS "bool assembly::SourceLine::has_source_line_number () const\fC [inline]\fP"
+
+.PP
+Did we parse a line number? 
+.SS "bool assembly::SourceLine::is_blank_line () const\fC [inline]\fP"
+
+.PP
+Did the line have no tokens or comments? Did the line have no token and no comment? 
+.SS "size_t assembly::SourceLine::num_tokens () const\fC [inline]\fP"
+
+.PP
+Return the number of non-LINE_NUMBER, non-COMMENT tokens\&. 
+.SS "std::string assembly::SourceLine::parsed_token (size_t index) const"
+
+.PP
+Returns the requested parsed token [0\&.\&.\&.\fBnum_tokens()\fP-1]\&. 
+.SS "size_t assembly::SourceLine::source_line_number () const\fC [inline]\fP"
+
+.PP
+Return the line number parsed\&. 
+.PP
+\fBPrecondition\fP
+.RS 4
+\fBhas_source_line_number()\fP returns true 
+.RE
+.PP
+
+.SS "std::string assembly::SourceLine::token_in_source (size_t index) const"
+
+.PP
+Returns the given token as it appeared in the original source line (escape characters will be included) Returns the requested \fIunparsed\fP token [0\&.\&.\&.\fBnum_tokens()\fP-1]\&. 
+.SS "size_t assembly::SourceLine::token_offset (size_t index) const"
+
+.PP
+Returns the char offset into the line where token begins\&. Returns the char offsset into the line where token begins\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "size_t assembly::SourceLine::_current_offset\fC [private]\fP"
+
+.PP
+Offset into _source_line\&. 
+.SS "std::string assembly::SourceLine::_current_token\fC [private]\fP"
+
+.PP
+\fBToken\fP being recognized\&. 
+.SS "bool assembly::SourceLine::_has_comment\fC [private]\fP"
+
+.PP
+Was there a comment on the line? 
+.SS "uint32_t assembly::SourceLine::_line_number\fC [private]\fP"
+
+.PP
+Line number, if present, 0 otherwise\&. 
+.SS "size_t assembly::SourceLine::_num_tokens\fC [private]\fP"
+
+.PP
+Non line-number tokens recgonized\&. 
+.SS "\fBParserState\fP assembly::SourceLine::_parser_state\fC [private]\fP"
+
+.PP
+State machine state\&. 
+.SS "std::string assembly::SourceLine::_source_line\fC [private]\fP"
+
+.PP
+Original line of code\&. 
+.SS "size_t assembly::SourceLine::_token_start_offset\fC [private]\fP"
+
+.PP
+Offset in line where token started\&. 
+.SS "\fBToken\fP assembly::SourceLine::_tokens[\fBMAX_TOKENS_PER_LINE\fP]\fC [private]\fP"
+
+.PP
+Non-line number, non-comment tokens\&. 
+.SS "constexpr char assembly::SourceLine::END_OF_LINE_CHAR = '\\0'\fC [static]\fP, \fC [constexpr]\fP, \fC [private]\fP"
+
+.SS "constexpr size_t assembly::SourceLine::MAX_TOKENS_PER_LINE = 3\fC [static]\fP, \fC [constexpr]\fP, \fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

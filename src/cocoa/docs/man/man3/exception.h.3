@@ -1,0 +1,41 @@
+.TH "/home/Jay/trs-80/src/cocoa/exception.h" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/cocoa/exception.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdexcept>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'exception\&.inl'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBassembly::Exception\fP"
+.br
+.RI "Base class for all exceptions thrown by the assembler\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBassembly\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename DerivedExceptionType , typename\&.\&.\&. Args> void \fBassembly::throw_\fP (Args &&\&.\&.\&. args)"
+.br
+.RI "Construct the DerivedExceptionType from the given arguments and throw the exception\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

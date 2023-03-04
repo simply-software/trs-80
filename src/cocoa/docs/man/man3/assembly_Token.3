@@ -1,0 +1,80 @@
+.TH "assembly::Token" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::Token \- Information about a recognized token\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <tokenize\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBToken\fP (\fBTokenID\fP \fBtype\fP, std::string_view \fBtext\fP)"
+.br
+.RI "\fBToken\fP consumes all characters in text\&. "
+.ti -1c
+.RI "\fBToken\fP (\fBTokenID\fP \fBtype\fP, std::string_view \fBtext\fP, size_t num_chars)"
+.br
+.RI "\fBToken\fP consumes only first num_chars characters in text\&. "
+.ti -1c
+.RI "\fBTokenID\fP \fBtype\fP () const"
+.br
+.RI "Type of recognized token\&. "
+.ti -1c
+.RI "std::string_view \fBtext\fP () const"
+.br
+.RI "Part of text consumed by the token\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTokenID\fP \fB_type\fP"
+.br
+.RI "Type of token recognized\&. "
+.ti -1c
+.RI "std::string \fB_text\fP"
+.br
+.RI "\fBToken\fP as it appeared in the source code\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Information about a recognized token\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "assembly::Token::Token (\fBTokenID\fP type, std::string_view text)\fC [inline]\fP"
+
+.PP
+\fBToken\fP consumes all characters in text\&. \fBToken\fP consumes all of text\&. 
+.SS "assembly::Token::Token (\fBTokenID\fP type, std::string_view text, size_t num_chars)\fC [inline]\fP"
+
+.PP
+\fBToken\fP consumes only first num_chars characters in text\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string_view assembly::Token::text () const\fC [inline]\fP"
+
+.PP
+Part of text consumed by the token\&. 
+.SS "\fBTokenID\fP assembly::Token::type () const\fC [inline]\fP"
+
+.PP
+Type of recognized token\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string assembly::Token::_text\fC [private]\fP"
+
+.PP
+\fBToken\fP as it appeared in the source code\&. 
+.SS "\fBTokenID\fP assembly::Token::_type\fC [private]\fP"
+
+.PP
+Type of token recognized\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

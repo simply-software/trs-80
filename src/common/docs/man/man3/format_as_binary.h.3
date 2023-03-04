@@ -1,0 +1,75 @@
+.TH "/home/Jay/trs-80/src/common/format/format_as_binary.h" 3 "Sat Aug 20 2022" "Common code" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/common/format/format_as_binary.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+\fC#include 'format_as_binary\&.inl'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBformat::DefaultBinaryFormatTraits\fP"
+.br
+.RI "Default formatting for binary values\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBformat\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBformat::BinaryPrefix\fP : uint8_t { \fBformat::PREFIX_NONE\fP, \fBformat::PREFIX_0b\fP, \fBformat::PREFIX_b\fP }"
+.br
+.RI "What should be added to the front of the value to\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value to 8-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (int8_t value)"
+.br
+.RI "Format an 8-bit signed value to 8-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value to 16-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (int16_t value)"
+.br
+.RI "Format a 16-bit signed value to 16-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value to 32-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (int32_t value)"
+.br
+.RI "Format a 32-bit signed value to 32-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value to 64-char string\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultBinaryFormatTraits> std::string \fBformat::format_as_binary\fP (int64_t value)"
+.br
+.RI "Format a 64-bit signed value to 64-char string\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Common code from the source code\&.

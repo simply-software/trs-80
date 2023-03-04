@@ -1,0 +1,49 @@
+.TH "/home/Jay/trs-80/src/common/format/justification.h" 3 "Sat Aug 20 2022" "Text formatting" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/common/format/justification.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdint>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'justification\&.inl'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBformat::DefaultJustificationTraits\fP"
+.br
+.RI "Example traits struct for using justify_text() "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBformat\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBformat::Justification\fP : uint8_t { \fBformat::LEFT\fP, \fBformat::CENTER\fP, \fBformat::RIGHT\fP }"
+.br
+.RI "Text justification within a printable field\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename JustificationTraits  = DefaultJustificationTraits> std::string \fBformat::justify\fP (const std::string &text_to_justify)"
+.br
+.RI "Pad the input string with a fill character\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Text formatting from the source code\&.

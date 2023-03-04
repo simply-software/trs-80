@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['prefix_0',['Prefix',['../structformat_1_1_default_binary_format_traits.html#aac824f9a4674384af616a56bd81e7336',1,'format::DefaultBinaryFormatTraits::Prefix()'],['../structformat_1_1_default_hex_format_traits.html#a4c6f37c3ad00dc7ed44a964196844364',1,'format::DefaultHexFormatTraits::Prefix()'],['../structformat_1_1_default_octal_format_traits.html#acd72012cb5e82c60b0e57b927206ce6f',1,'format::DefaultOctalFormatTraits::Prefix()'],['../struct_test2_traits.html#ad417510edcf855c387a3c3bd83c6b3b5',1,'Test2Traits::Prefix()'],['../struct_test2_traits.html#a805cbf6534fc9e5cfe298c9c723243a7',1,'Test2Traits::Prefix()'],['../struct_test4_traits.html#ab4a93fb820b5c4631212d1bae6110c23',1,'Test4Traits::Prefix()'],['../struct_test2_traits.html#a455f1bd1d104403bc6723a1ca6b90aee',1,'Test2Traits::Prefix()']]],
+  ['prependchar_1',['PrependChar',['../structformat_1_1_default_int_format_traits.html#a390208be93e14b36a9d240b4783a6af1',1,'format::DefaultIntFormatTraits::PrependChar()'],['../struct_test2_traits.html#a886b4dcd44c26a7872c88a35485596f9',1,'Test2Traits::PrependChar()']]]
+];

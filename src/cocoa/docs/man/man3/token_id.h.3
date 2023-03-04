@@ -1,0 +1,39 @@
+.TH "/home/Jay/trs-80/src/cocoa/token_id.h" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/cocoa/token_id.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdint>\fP
+.br
+\fC#include <iosfwd>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBassembly\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBassembly::TokenID\fP : uint8_t { \fBassembly::NONE\fP, \fBassembly::DOT\fP, \fBassembly::OCTOTHORPE\fP, \fBassembly::PERCENT_SIGN\fP, \fBassembly::DOLLAR_SIGN\fP, \fBassembly::LESS_THAN\fP, \fBassembly::GREATER_THAN\fP, \fBassembly::DOUBLE_QUOTE\fP, \fBassembly::SINGLE_QUOTE\fP, \fBassembly::FRONT_SLASH\fP, \fBassembly::COMMA\fP, \fBassembly::PLUS_SIGN\fP, \fBassembly::INCREMENT\fP, \fBassembly::MINUS_SIGN\fP, \fBassembly::DECREMENT\fP, \fBassembly::LEFT_BRACKET\fP, \fBassembly::RIGHT_BRACKET\fP, \fBassembly::ASTERISK\fP, \fBassembly::CARET\fP, \fBassembly::AMPERSAND\fP, \fBassembly::EXCLAMATION_POINT\fP, \fBassembly::PIPE\fP, \fBassembly::TILDE\fP, \fBassembly::EQUAL_SIGN\fP, \fBassembly::LESS_THAN_OR_EQUAL\fP, \fBassembly::GREATER_THAN_OR_EQUAL\fP, \fBassembly::NOT_EQUAL\fP, \fBassembly::LEFT_PARENTHESIS\fP, \fBassembly::RIGHT_PARENTHESIS\fP, \fBassembly::LEFT_BRACE\fP, \fBassembly::RIGHT_BRACE\fP, \fBassembly::COMMENT\fP, \fBassembly::TEXT\fP, \fBassembly::NUM_VALUES\fP }"
+.br
+.RI "The tokens that are recognized\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBassembly::operator<<\fP (std::ostream &os, TokenID token)"
+.br
+.RI "Output as the token ID, eg 'COMMA'\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

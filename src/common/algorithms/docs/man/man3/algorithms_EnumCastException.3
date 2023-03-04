@@ -1,0 +1,48 @@
+.TH "algorithms::EnumCastException" 3 "Sat Aug 20 2022" "Algorithms" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+algorithms::EnumCastException \- Exception thrown by the 'enum_cast' algorithm if\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <enum_cast\&.h>\fP
+.PP
+Inherits std::range_error\&.
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEnumCastException\fP (const char *typename_t, const char *value, const char *optional_error_text)"
+.br
+.RI "Constructs the error message of the form: "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , typename ValueType > void \fBthrow_enum_cast_exception\fP (ValueType value, const char *optional_error_text)"
+.br
+.RI "Function to use to construct and throw this object\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Exception thrown by the 'enum_cast' algorithm if\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "algorithms::EnumCastException::EnumCastException (const char * typename_t, const char * value, const char * optional_error_text)\fC [private]\fP"
+
+.PP
+Constructs the error message of the form: 
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<typename T , typename ValueType > void throw_enum_cast_exception (ValueType value, const char * optional_error_text)\fC [friend]\fP"
+
+.PP
+Function to use to construct and throw this object\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Algorithms from the source code\&.

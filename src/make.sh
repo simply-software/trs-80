@@ -202,7 +202,7 @@ run_all_tests() {
     return 1
 }
 
-BASEDIR="/home/Jay/project/src"
+BASEDIR="/home/Jay/trs-80/src"
 RUNDIR=${PWD}
 CCFLAGS="-ggdb3 -std=c++17 -I ${BASEDIR}"
 process_directory ""

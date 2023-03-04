@@ -1,0 +1,64 @@
+.TH "assembly::Exception" 3 "Sat Aug 20 2022" "CoCoA: TRS-80 Color Computer Assembler" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+assembly::Exception \- Base class for all exceptions thrown by the assembler\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <exception\&.h>\fP
+.PP
+Inherits std::exception\&.
+.PP
+Inherited by \fBassembly::SourceLine::ParseError\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBwhat\fP () const noexcept final"
+.br
+.RI "Return the error message\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fB_error_buffer\fP"
+.br
+.RI "Memory to hold error message\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all exceptions thrown by the assembler\&. 
+
+
+.PP
+.nf
+   Since the exceptions themselves don't know how to build
+   their error messages (this is elsewhere, in a common place
+   so we can easily change the format in the future), in order
+   to comply with what(), we have to have some memory allocated
+   somewhere to return a const char*\&.  This class holds that
+   memory\&. 
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "const char * assembly::Exception::what () const\fC [inline]\fP, \fC [final]\fP, \fC [protected]\fP, \fC [noexcept]\fP"
+
+.PP
+Return the error message\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string assembly::Exception::_error_buffer\fC [private]\fP"
+
+.PP
+Memory to hold error message\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CoCoA: TRS-80 Color Computer Assembler from the source code\&.

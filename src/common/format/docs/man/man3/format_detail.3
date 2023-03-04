@@ -1,0 +1,94 @@
+.TH "format::detail" 3 "Sat Aug 20 2022" "Text formatting" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+format::detail
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fB_format_chars\fP (std::string text, \fBCharCase\fP \fBchar_case\fP)"
+.br
+.ti -1c
+.RI "std::string \fB_format_binary\fP (std::string value, \fBBinaryPrefix\fP prefix)"
+.br
+.RI "Applies the format spec to the int already converted\&. "
+.ti -1c
+.RI "template<typename FmtSpec , typename T > std::string \fBformat_binary_helper\fP (T value)"
+.br
+.RI "Helper to avoid a lot of code duplication below\&. "
+.ti -1c
+.RI "std::string \fB_format_hex\fP (std::string value, \fBHexPrefix\fP prefix, size_t field_width)"
+.br
+.RI "Applies the format spec to the int already converted\&. "
+.ti -1c
+.RI "template<typename FmtSpec , typename T > std::string \fBformat_hex_helper\fP (T value)"
+.br
+.RI "Helper to avoid a lot of code duplication below\&. "
+.ti -1c
+.RI "std::string \fB_format_int\fP (std::string value, char optional_prepend_char)"
+.br
+.RI "Applies the format spec to the int already converted\&. "
+.ti -1c
+.RI "template<typename FmtSpec , typename T > std::string \fBformat_int_helper\fP (T value)"
+.br
+.RI "Helper to avoid a lot of code duplication below\&. "
+.ti -1c
+.RI "std::string \fB_format_octal\fP (std::string value, \fBOctalPrefix\fP prefix, size_t field_width)"
+.br
+.RI "Applies the format spec to the int already converted\&. "
+.ti -1c
+.RI "template<typename FmtSpec , typename T > std::string \fBformat_octal_helper\fP (T value)"
+.br
+.RI "Helper to avoid a lot of code duplication below\&. "
+.ti -1c
+.RI "std::string \fBdo_justify\fP (std::string value, \fBJustification\fP justification, size_t field_width, char fill_char)"
+.br
+.RI "Function that actually does the justification\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "std::string format::detail::_format_binary (std::string value, \fBBinaryPrefix\fP prefix)"
+
+.PP
+Applies the format spec to the int already converted\&. 
+.SS "std::string format::detail::_format_chars (std::string text, \fBCharCase\fP char_case)"
+
+.SS "std::string format::detail::_format_hex (std::string value, \fBHexPrefix\fP prefix, size_t number_of_digits)"
+
+.PP
+Applies the format spec to the int already converted\&. 
+.SS "std::string format::detail::_format_int (std::string value, char optional_prepend_char)"
+
+.PP
+Applies the format spec to the int already converted\&. 
+.SS "std::string format::detail::_format_octal (std::string value, \fBOctalPrefix\fP prefix, size_t number_of_digits)"
+
+.PP
+Applies the format spec to the int already converted\&. 
+.SS "std::string format::detail::do_justify (std::string value, \fBJustification\fP justification, size_t field_width, char fill_char)"
+
+.PP
+Function that actually does the justification\&. 
+.SS "template<typename FmtSpec , typename T > std::string format::detail::format_binary_helper (T value)\fC [inline]\fP"
+
+.PP
+Helper to avoid a lot of code duplication below\&. 
+.SS "template<typename FmtSpec , typename T > std::string format::detail::format_hex_helper (T value)\fC [inline]\fP"
+
+.PP
+Helper to avoid a lot of code duplication below\&. 
+.SS "template<typename FmtSpec , typename T > std::string format::detail::format_int_helper (T value)\fC [inline]\fP"
+
+.PP
+Helper to avoid a lot of code duplication below\&. 
+.SS "template<typename FmtSpec , typename T > std::string format::detail::format_octal_helper (T value)\fC [inline]\fP"
+
+.PP
+Helper to avoid a lot of code duplication below\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Text formatting from the source code\&.

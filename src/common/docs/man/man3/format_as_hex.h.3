@@ -1,0 +1,59 @@
+.TH "/home/Jay/trs-80/src/common/format/format_as_hex.h" 3 "Sat Aug 20 2022" "Common code" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/Jay/trs-80/src/common/format/format_as_hex.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+\fC#include 'format_as_hex\&.inl'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBformat::DefaultHexFormatTraits\fP"
+.br
+.RI "Default formatting for hexadecimal values\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI "namespace \fBformat\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBformat::HexPrefix\fP : uint8_t { \fBformat::PREFIX_NONE\fP, \fBformat::PREFIX_0X\fP, \fBformat::PREFIX_0x\fP, \fBformat::PREFIX_X\fP, \fBformat::PREFIX_x\fP }"
+.br
+.RI "What should be added to the front of the value to\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat::format_as_hex\fP (uint8_t value)"
+.br
+.RI "Format an 8-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat::format_as_hex\fP (uint16_t value)"
+.br
+.RI "Format a 16-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat::format_as_hex\fP (uint32_t value)"
+.br
+.RI "Format a 32-bit unsigned value\&. "
+.ti -1c
+.RI "template<typename FmtSpec  = DefaultHexFormatTraits> std::string \fBformat::format_as_hex\fP (uint64_t value)"
+.br
+.RI "Format a 64-bit unsigned value\&. "
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Common code from the source code\&.
